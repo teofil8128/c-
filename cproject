@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number, nr1, nr2, nr3, count = 0;
+    // la inceput declaram variabilele nr = cifra count= numarule de cifre repetate
+    // Explică utilizatorului scopul programului
+    cout << "Acest program verifică dacă un număr natural de 3 cifre are cifre repetate." << endl;
+
+    // Citește input-ul de la utilizator
+    cout << "Vă rugăm să introduceți un număr natural de 3 cifre între 100 și 999: ";
+    cin >> number;
+
+    // Verifică dacă input-ul este un număr de 3 cifre
+    if (number < 100 || number > 999) {
+        cout << "Input nevalid. Vă rugăm să introduceți un număr natural de 3 cifre între 100 și 999." << endl;
+        return 0;
+    }
+    //Nr1 este prima cifra din numar Nr2 a doua Nr3 a treia
+    // Extrage cifrele numărului
+    nr1 = number / 100;
+    nr2 = (number % 100) / 10;
+    nr3 = number % 10;
+
+    // Verifică dacă cifrele sunt repetate
+    if (nr1 == nr2 && nr2 == nr3) {
+    count = 3;
+    cout << "În numărul " << number << ", cifra " << nr1 << " se repetă de " << count << " ori." << endl;
+} 
+    if (nr1 == nr2 && nr2 == nr3) {
+        count = 3;
+    } else if (nr1 == nr2 || nr2 == nr3 || nr1 == nr3) {
+        // Găsește cifra repetată și numără aparițiile acesteia
+        int nr_repetat = nr1 == nr2 ? nr1 : nr2 == nr3 ? nr2 : nr1;
+        count = nr1 == nr2 && nr2 == nr3 ? 3 : 2;
+        cout << "În numărul " << number << ", cifra " << nr_repetat << " se repetă de " << count << " ori." << endl;
+    } else {
+        cout << "Numărul " << number << " are cifre diferite." << endl;
+    }
+
+    return 0;
+}
